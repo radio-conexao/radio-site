@@ -5,10 +5,19 @@
     <title>Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Script CMS -->
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.1.11/dist/decap-cms.js"></script>
   </head>
   <body>
-    <p style="text-align:center;">Carregando painel...</p>
+    <script>
+      window.CMS_MANUAL_INIT = true;
+    </script>
+
+    <script>
+      window.addEventListener("load", function () {
+        if (window.CMS) {
+          window.CMS.init();
+        }
+      });
+    </script>
   </body>
 </html>
