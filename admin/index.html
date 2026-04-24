@@ -8,15 +8,26 @@
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@3.1.11/dist/decap-cms.js"></script>
   </head>
   <body>
-    <script>
-      window.CMS_MANUAL_INIT = true;
-    </script>
+    <h2 style="text-align:center;">Carregando CMS...</h2>
 
     <script>
+      console.log("🔍 Iniciando CMS...");
+
+      window.CMS_MANUAL_INIT = true;
+
       window.addEventListener("load", function () {
+        console.log("📦 Página carregada");
+
         if (window.CMS) {
+          console.log("✅ CMS encontrado, iniciando...");
           window.CMS.init();
+        } else {
+          console.error("❌ CMS NÃO carregou");
         }
+      });
+
+      window.addEventListener("error", function (e) {
+        console.error("🚨 ERRO GLOBAL:", e.message);
       });
     </script>
   </body>
