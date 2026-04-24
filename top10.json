@@ -1,4 +1,20 @@
 [
-  {"posicao": "1", "musica": "Música Massa", "artista": "Cantor Famoso"},
-  {"posicao": "2", "musica": "Hit do Verão", "artista": "Banda Top"}
+  {
+    "posicao": "1",
+    "musica": "Música Massa",
+    "artista": "Cantor Famoso",
+    "status": "gold"
+  },
+  {
+    "posicao": "2",
+    "musica": "Hit do Verão",
+    "artista": "Banda Top",
+    "status": "silver"
+  },
+  {
+    "posicao": "3",
+    "musica": "Nova Canção",
+    "artista": "Artista Local",
+    "status": "bronze"
+  }
 ]
