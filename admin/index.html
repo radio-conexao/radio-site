@@ -11,23 +11,16 @@
     <h2 style="text-align:center;">Carregando CMS...</h2>
 
     <script>
-      console.log("🔍 Iniciando CMS...");
-
       window.CMS_MANUAL_INIT = true;
 
       window.addEventListener("load", function () {
-        console.log("📦 Página carregada");
-
         if (window.CMS) {
-          console.log("✅ CMS encontrado, iniciando...");
-          window.CMS.init();
+          window.CMS.init({
+            config: "/admin/config.yml"
+          });
         } else {
-          console.error("❌ CMS NÃO carregou");
+          document.body.innerHTML = "<h2>Erro: CMS não carregou</h2>";
         }
-      });
-
-      window.addEventListener("error", function (e) {
-        console.error("🚨 ERRO GLOBAL:", e.message);
       });
     </script>
   </body>
