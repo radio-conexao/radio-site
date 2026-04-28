@@ -1,21 +1,21 @@
 {
-  "logo": "https://github.com/radio-conexao/radio-site/blob/main/content/logo%20sem%20fundo%20conexao.png?raw=true",
+  "logo": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/logo%20sem%20fundo%20conexao.png",
   "link_whatsapp": "5527998184266",
   "carrossel": [
     {
-      "imagem": "https://github.com/radio-conexao/radio-site/blob/main/content/BANNER%202.jpg?raw=true",
+      "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%202.jpg",
       "texto": "Rádio Conexão FM 87,9 - A sua rádio conectada em você!"
     },
     {
-      "imagem": "https://github.com/radio-conexao/radio-site/blob/main/content/BANNER%203.jpg?raw=true",
+      "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%203.jpg",
       "texto": "Participe das nossas promoções pelo WhatsApp"
     },
     {
-      "imagem": "https://github.com/radio-conexao/radio-site/blob/main/content/BANNER%204.jpg?raw=true",
+      "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%204.jpg",
       "texto": "As melhores notícias de João Neiva e região"
     },
     {
-      "imagem": "https://github.com/radio-conexao/radio-site/blob/main/content/BANNER%205-.jpg?raw=true",
+      "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%205-.jpg",
       "texto": "Conexão FM: A rádio nota 10 da cidade!"
     }
   ]
