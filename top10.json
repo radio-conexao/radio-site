@@ -1,20 +1,16 @@
 [
   {
     "posicao": "1",
-    "musica": "Música Massa",
-    "artista": "Cantor Famoso",
-    "status": "gold"
+    "status": "gold",
+    "musica": "Nome da Música 1",
+    "artista": "Nome do Artista",
+    "imagem": "https://www.rbsdirect.com.br/imagesrc/25292416.jpg?w=100"
   },
   {
     "posicao": "2",
-    "musica": "Hit do Verão",
-    "artista": "Banda Top",
-    "status": "silver"
-  },
-  {
-    "posicao": "3",
-    "musica": "Nova Canção",
-    "artista": "Artista Local",
-    "status": "bronze"
+    "status": "silver",
+    "musica": "Nome da Música 2",
+    "artista": "Nome do Artista",
+    "imagem": "https://via.placeholder.com/100"
   }
 ]
