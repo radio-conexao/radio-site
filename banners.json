@@ -1,6 +1,18 @@
 {
-  "logo": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/logo sem fundo conexao.png",
- "banner_topo": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop",
-  "frase_topo": "Rádio Conexão FM 87,9 A SUA RADIO CONECTADA EM VOCÊ",
-  "link_whatsapp": "5527998184266"
+  "logo": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/logo.png",
+  "link_whatsapp": "5527998184266",
+  "carrossel": [
+    {
+      "imagem": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200",
+      "texto": "Rádio Conexão FM 87,9 - A sua rádio conectada em você!"
+    },
+    {
+      "imagem": "https://images.unsplash.com/photo-1478737270239-2f02b77fc618?q=80&w=1200",
+      "texto": "Participe das nossas promoções pelo WhatsApp"
+    },
+    {
+      "imagem": "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?q=80&w=1200",
+      "texto": "A sua rádio conectada em você!"
+    }
+  ]
 }
