@@ -2,15 +2,71 @@
   {
     "posicao": "1",
     "status": "gold",
-    "musica": "Nome da Música 1",
-    "artista": "Nome do Artista",
-    "imagem": "https://www.rbsdirect.com.br/imagesrc/25292416.jpg?w=100"
+    "musica": "Coração Partido (Ao Vivo)",
+    "artista": "Grupo Menos É Mais",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top1.webp"
   },
   {
     "posicao": "2",
     "status": "silver",
-    "musica": "Nome da Música 2",
-    "artista": "Nome do Artista",
-    "imagem": "https://via.placeholder.com/100"
+    "musica": "Oh Garota Eu Quero Você Só Pra Mim",
+    "artista": "Oruam, Zé Felipe, Mc Tuto",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top2.webp"
+  },
+  {
+    "posicao": "3",
+    "status": "bronze",
+    "musica": "Fui Mlk",
+    "artista": "Nilo, Dj Di Marques & Mc Paiva Zs",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top3.webp"
+  },
+  {
+    "posicao": "4",
+    "status": "",
+    "musica": "Tubarões (Ao Vivo)",
+    "artista": "Diego & Victor Hugo",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top4.webp"
+  },
+  {
+    "posicao": "5",
+    "status": "",
+    "musica": "Última Saudade (Ao Vivo)",
+    "artista": "Henrique & Juliano",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top5.webp"
+  },
+  {
+    "posicao": "6",
+    "status": "",
+    "musica": "Apaga Apaga Apaga (Ao Vivo)",
+    "artista": "Danilo & Davi",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top6.webp"
+  },
+  {
+    "posicao": "7",
+    "status": "",
+    "musica": "Resenha Do Arrocha",
+    "artista": "J. Eskine, Alef Donk",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top7.webp"
+  },
+  {
+    "posicao": "8",
+    "status": "",
+    "musica": "Mãe Solteira",
+    "artista": "Dg E Batidão Stronda, Mc Davi, J. Eskine",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top8.webp"
+  },
+  {
+    "posicao": "9",
+    "status": "",
+    "musica": "Barbie",
+    "artista": "Mc Tuto & Dj Glenner",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top9.webp"
+  },
+  {
+    "posicao": "10",
+    "status": "",
+    "musica": "Die With A Smile",
+    "artista": "Lady Gaga & Bruno Mars",
+    "imagem": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top10.webp"
   }
 ]
