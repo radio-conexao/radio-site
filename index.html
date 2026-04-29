@@ -14,7 +14,7 @@
             padding-bottom: 140px; 
         }
         
-        /* HEADER - Ajuste Reforçado para PC e Celular */
+        /* HEADER - Ajuste para evitar quebra de linha no PC */
         header { 
             display: flex; 
             justify-content: space-between; 
@@ -22,13 +22,13 @@
             padding: 10px 5%; 
             background: #fff; 
             border-bottom: 2px solid #eee; 
-            flex-wrap: nowrap; /* Garante que no PC fiquem na mesma linha */
+            flex-wrap: nowrap; 
         }
         .logo-container { 
             display: flex; 
             align-items: center; 
             gap: 15px; 
-            flex: 0 1 auto; /* Não deixa a logo "empurrar" o menu para longe */
+            flex: 1; 
         }
         .logo { max-width: 120px; height: auto; }
         .slogan { 
@@ -37,7 +37,7 @@
             font-size: 13px; 
             text-transform: uppercase; 
             line-height: 1.2;
-            max-width: 180px;
+            white-space: nowrap; /* Impede a quebra de linha da frase no PC */
         }
         
         nav { display: flex; gap: 20px; }
@@ -62,7 +62,7 @@
         .top10-img { width: 65px; height: 65px; border-radius: 5px; object-fit: cover; }
         .posicao { font-size: 22px; font-weight: bold; color: #c0392b; width: 40px; }
 
-        /* PLAYER COMPACTO (Foco Celular) */
+        /* PLAYER COMPACTO */
         .player-footer { 
             position: fixed; 
             bottom: 0; 
@@ -91,10 +91,11 @@
         .instagram { background: #e1306c; }
         .facebook { background: #1877f2; }
 
-        /* RESPONSIVIDADE CELULAR - PRIORIDADE MÁXIMA */
+        /* RESPONSIVIDADE CELULAR */
         @media (max-width: 768px) {
             header { flex-direction: column; justify-content: center; text-align: center; gap: 10px; }
             .logo-container { flex: none; width: 100%; justify-content: center; }
+            .slogan { white-space: normal; font-size: 11px; } /* Permite quebra no celular se necessário */
             nav { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 10px; }
             
             .player-flex { flex-direction: column; text-align: center; gap: 10px; }
@@ -177,6 +178,7 @@
 </div>
 
 <script>
+    // Carregamento do Top 10 com imagens
     fetch('top10.json').then(r => r.json()).then(data => {
         const container = document.getElementById('top10-container');
         data.forEach(item => {
