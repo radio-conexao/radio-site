@@ -1,0 +1,16 @@
+{
+  "name": "Rádio Conexão FM",
+  "short_name": "Conexão FM",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#c0392b",
+  "icons": [
+    {
+      "src": "https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/logo%20sem%20fundo%20conexao.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
