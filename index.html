@@ -6,17 +6,34 @@
     <title>Rádio Conexão FM - 87,9</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/dist/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #ffffff; color: #333; margin: 0; padding-bottom: 160px; }
+        body { 
+            font-family: 'Segoe UI', Arial, sans-serif; 
+            background-color: #ffffff; 
+            color: #333; 
+            margin: 0; 
+            padding-bottom: 140px; /* Espaço para o player não cobrir o conteúdo */
+        }
         
-        /* HEADER */
-        header { display: flex; justify-content: space-between; align-items: center; padding: 15px 5%; background: #fff; border-bottom: 2px solid #eee; }
-        .logo { max-width: 150px; }
-        .slogan { color: #c0392b; font-weight: bold; font-size: 14px; text-transform: uppercase; }
-        nav a { margin-left: 15px; text-decoration: none; color: #333; font-weight: bold; font-size: 13px; }
+        /* HEADER AJUSTADO - Remove buraco no PC e organiza Celular */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px 5%; 
+            background: #fff; 
+            border-bottom: 2px solid #eee; 
+            flex-wrap: wrap; 
+        }
+        .logo-container { display: flex; align-items: center; gap: 15px; flex: 1; min-width: 250px; }
+        .logo { max-width: 120px; height: auto; }
+        .slogan { color: #c0392b; font-weight: bold; font-size: 13px; text-transform: uppercase; line-height: 1.2; }
+        
+        nav { display: flex; gap: 15px; }
+        nav a { text-decoration: none; color: #333; font-weight: bold; font-size: 13px; text-transform: uppercase; }
 
         /* BANNER */
         .banner { width: 100%; border-bottom: 4px solid #ffcc00; }
-        .banner img { width: 100%; display: block; }
+        .banner img { width: 100%; display: block; height: auto; }
 
         .container { max-width: 1200px; margin: auto; padding: 20px; }
         .titulo-secao { color: #c0392b; border-left: 6px solid #ffcc00; padding-left: 15px; margin: 40px 0 25px; text-transform: uppercase; }
@@ -25,39 +42,68 @@
         .grid-triplo { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 40px; }
         .card { background: #f9f9f9; border: 1px solid #ddd; border-radius: 10px; overflow: hidden; text-align: center; transition: 0.3s; }
         .card:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .card img { width: 100%; height: 180px; object-fit: cover; }
+        .card img { width: 100%; height: 200px; object-fit: cover; }
         .card-body { padding: 15px; }
-        .btn-acao { background: #ffcc00; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 5px; }
+        .btn-acao { background: #ffcc00; border: none; padding: 10px; width: 100%; font-weight: bold; cursor: pointer; border-radius: 5px; text-transform: uppercase; }
 
         /* TOP 10 COM IMAGENS */
         .top10-item { display: flex; align-items: center; gap: 20px; padding: 15px; border-bottom: 1px solid #eee; background: #fff; }
-        .top10-img { width: 60px; height: 60px; border-radius: 5px; object-fit: cover; }
-        .posicao { font-size: 20px; font-weight: bold; color: #c0392b; width: 30px; }
+        .top10-img { width: 65px; height: 65px; border-radius: 5px; object-fit: cover; }
+        .posicao { font-size: 22px; font-weight: bold; color: #c0392b; width: 40px; }
 
-        /* PLAYER E SOCIAIS */
-        .player-footer { position: fixed; bottom: 0; width: 100%; background: #c0392b; color: #fff; padding: 15px 0; z-index: 1000; }
-        .player-flex { max-width: 1200px; margin: auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; flex-wrap: wrap; }
-        .sociais-box { display: flex; gap: 10px; }
-        .btn-social { padding: 8px 15px; border-radius: 20px; text-decoration: none; font-weight: bold; color: #fff; display: flex; align-items: center; gap: 8px; font-size: 12px; }
+        /* PLAYER RODAPÉ COMPACTO */
+        .player-footer { 
+            position: fixed; 
+            bottom: 0; 
+            width: 100%; 
+            background: #c0392b; 
+            color: #fff; 
+            padding: 12px 0; 
+            z-index: 1000; 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.2);
+        }
+        .player-flex { 
+            max-width: 1200px; 
+            margin: auto; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 0 20px; 
+            gap: 15px;
+        }
+        .info-radio { font-size: 13px; line-height: 1.3; }
+        audio { height: 35px; width: 220px; filter: grayscale(1) brightness(2); }
+
+        .sociais-box { display: flex; gap: 8px; }
+        .btn-social { padding: 8px 15px; border-radius: 20px; text-decoration: none; color: #fff; font-size: 12px; font-weight: bold; display: flex; align-items: center; gap: 5px; }
         .whatsapp { background: #25d366; }
         .instagram { background: #e1306c; }
         .facebook { background: #1877f2; }
-        audio { height: 35px; filter: grayscale(1) brightness(2); }
 
-        @media (max-width: 768px) { .player-flex { flex-direction: column; gap: 15px; } }
+        /* RESPONSIVIDADE CELULAR */
+        @media (max-width: 768px) {
+            header { justify-content: center; text-align: center; }
+            .logo-container { flex: none; width: 100%; justify-content: center; margin-bottom: 10px; }
+            nav { width: 100%; justify-content: center; border-top: 1px solid #eee; padding-top: 10px; }
+            
+            .player-flex { flex-direction: column; text-align: center; gap: 10px; }
+            audio { width: 100%; }
+            .info-radio br { display: none; }
+            body { padding-bottom: 200px; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <div style="display: flex; align-items: center; gap: 15px;">
+    <div class="logo-container">
         <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/logo%20sem%20fundo%20conexao.png" class="logo">
         <span class="slogan">Sua rádio conectada em você!</span>
     </div>
     <nav>
-        <a href="#">INÍCIO</a>
-        <a href="#">TOP 10</a>
-        <a href="#">PODCASTS</a>
+        <a href="#">Início</a>
+        <a href="#">Top 10</a>
+        <a href="#">Podcasts</a>
     </nav>
 </header>
 
@@ -71,35 +117,35 @@
     <div class="grid-triplo">
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/entrevista1.png">
-            <div class="card-body"><h3>Entrevista 01</h3><button class="btn-acao">OUVIR AGORA</button></div>
+            <div class="card-body"><h3>Entrevista 01</h3><button class="btn-acao">Ouvir Agora</button></div>
         </div>
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/entrevista2.png">
-            <div class="card-body"><h3>Entrevista 02</h3><button class="btn-acao">OUVIR AGORA</button></div>
+            <div class="card-body"><h3>Entrevista 02</h3><button class="btn-acao">Ouvir Agora</button></div>
         </div>
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/entrevista3.png">
-            <div class="card-body"><h3>Entrevista 03</h3><button class="btn-acao">OUVIR AGORA</button></div>
+            <div class="card-body"><h3>Entrevista 03</h3><button class="btn-acao">Ouvir Agora</button></div>
         </div>
     </div>
 
-    <h2 class="titulo-secao">Notícias</h2>
+    <h2 class="titulo-secao">Notícias & Destaques</h2>
     <div class="grid-triplo">
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top1.webp">
-            <div class="card-body"><h4>Destaque Musical</h4><p>As novidades do mundo da música.</p></div>
+            <div class="card-body"><h4>Destaque Musical</h4><p>Novidades da semana.</p></div>
         </div>
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%203.jpg">
-            <div class="card-body"><h4>Evento Local</h4><p>Confira o que acontece em João Neiva.</p></div>
+            <div class="card-body"><h4>Evento Local</h4><p>Fique por dentro.</p></div>
         </div>
         <div class="card">
             <img src="https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/BANNER%204.jpg">
-            <div class="card-body"><h4>Programação</h4><p>Novos horários na Conexão FM.</p></div>
+            <div class="card-body"><h4>Rádio Conexão</h4><p>Nossa programação.</p></div>
         </div>
     </div>
 
-    <h2 class="titulo-secao">As Mais Pedidas</h2>
+    <h2 class="titulo-secao">As 10 Mais Pedidas</h2>
     <div id="top10-container">
         </div>
 
@@ -107,7 +153,7 @@
 
 <div class="player-footer">
     <div class="player-flex">
-        <div>
+        <div class="info-radio">
             <strong>Rádio Conexão FM</strong> <span style="background:rgba(255,255,255,0.2); padding: 2px 5px; border-radius: 3px; font-size: 10px;">AO VIVO</span><br>
             <small>João Neiva / ES - 87,9 FM</small>
         </div>
@@ -125,18 +171,18 @@
 </div>
 
 <script>
-    // Carrega o Top 10 com imagens
+    // Carrega o Top 10 buscando imagens no JSON
     fetch('top10.json').then(r => r.json()).then(data => {
-        const div = document.getElementById('top10-container');
-        data.forEach(i => {
-            div.innerHTML += `
+        const container = document.getElementById('top10-container');
+        data.forEach(item => {
+            container.innerHTML += `
                 <div class="top10-item">
-                    <span class="posicao">${i.posicao}º</span>
-                    <img src="${i.imagem}" class="top10-img">
-                    <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
+                    <span class="posicao">${item.posicao}º</span>
+                    <img src="${item.imagem}" class="top10-img" onerror="this.src='https://raw.githubusercontent.com/radio-conexao/radio-site/main/content/top1.webp'">
+                    <div><strong>${item.musica}</strong><br><small>${item.artista}</small></div>
                 </div>`;
         });
-    });
+    }).catch(err => console.log("Erro ao carregar top 10:", err));
 </script>
 
 </body>
