@@ -3,18 +3,18 @@
     "horario": "08:00",
     "programa": "Conexão Manhã Show",
     "locutor": "Nome do Locutor",
-    "imagem": "conexaomanhashow.png"
+    "imagem": "content/conexaomanhashow.png"
   },
   {
     "horario": "10:00",
     "programa": "Conexão Online",
     "locutor": "Nome do Locutor",
-    "imagem": "conexaoonline.png"
+    "imagem": "content/conexaoonline.png"
   },
   {
     "horario": "14:00",
     "programa": "Top Sertanejo",
     "locutor": "Nome do Locutor",
-    "imagem": "topsertanejo.png"
+    "imagem": "content/topsertanejo.png"
   }
 ]
