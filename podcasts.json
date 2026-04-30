@@ -2,11 +2,11 @@
   {
     "titulo": "Entrevista com Prefeito",
     "descricao": "Batemos um papo sobre as melhorias em João Neiva.",
-    "audio": "https://radio-conexao.github.io/radio-site/content/entrevista1.mp3"
+    "audio": "content/entrevista1.mp3"
   },
   {
     "titulo": "Momento Retrô",
     "descricao": "Os maiores sucessos dos anos 80 e 90.",
-    "audio": "https://radio-conexao.github.io/radio-site/content/entrevista2.mp3"
+    "audio": "content/entrevista2.mp3"
   }
 ]
