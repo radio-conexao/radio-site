@@ -17,16 +17,20 @@
       --radius: 12px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 110px; overflow-x: hidden; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 110px; }
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
     .divider { width: 50px; height: 4px; background: var(--primary); margin: 10px auto 30px; border-radius: 2px; }
 
-    /* HEADER */
+    /* HEADER CORRIGIDO */
     header { background: #fff; border-bottom: 3px solid var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
     nav { display: flex; align-items: center; justify-content: space-between; }
-    .logo-container img { height: 55px; width: auto; }
-    .social-links a { color: var(--primary); margin-left: 12px; font-size: 1.2rem; text-decoration: none; }
+    .header-left { display: flex; align-items: center; gap: 15px; }
+    .logo-container img { height: 60px; width: auto; }
+    .header-phrase { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
+    .social-links { display: flex; gap: 12px; }
+    .social-links a { color: var(--primary); font-size: 1.4rem; text-decoration: none; transition: 0.3s; }
+    .social-links a:hover { color: #333; }
 
     /* CARROSSEL */
     #hero { padding: 15px 0; }
@@ -34,35 +38,36 @@
     .carousel-slide { display: none; width: 100%; height: 100%; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
-    /* SEÇÕES GERAIS */
-    section { padding: 35px 0; display: block !important; }
+    /* SEÇÕES */
+    section { padding: 40px 0; }
     .section-alt { background: var(--bg-section); }
     .section-header { text-align: center; }
 
-    /* GRIDS RESISTENTES */
-    .grid-layout { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); width: 100%; max-width: 350px; flex-grow: 1; }
+    /* GRIDS */
+    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
     
     /* AUDIO PLAYERS */
+    .card-item h4 { color: var(--primary); margin-bottom: 5px; font-family: 'Montserrat'; }
     audio { width: 100%; height: 35px; margin-top: 10px; }
 
     /* TOP 10 */
-    .top10-list { max-width: 600px; margin: 0 auto; }
-    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; }
-    .top10-img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
+    .top10-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid var(--border); }
+    .top10-img { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; }
 
     /* PLAYER FIXO */
-    #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 12px 0; z-index: 2000; }
+    #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 15px 0; z-index: 2000; }
     .player-content { display: flex; align-items: center; justify-content: space-between; }
-    #btn-play { width: 50px; height: 50px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.3rem; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .live-text { flex-grow: 1; margin-left: 12px; line-height: 1.2; }
-    .social-footer { display: flex; gap: 8px; }
-    .btn-icon { background: rgba(255,255,255,0.2); color: #fff; padding: 10px; border-radius: 50%; text-decoration: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+    #btn-play { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.5rem; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    .live-info { flex-grow: 1; margin-left: 20px; }
+    .social-footer { display: flex; gap: 10px; }
+    .footer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.2rem; }
 
     @media (max-width: 600px) {
+      .header-phrase { display: none; }
       .carousel-container { aspect-ratio: 16/9; }
-      .live-text p { display: none; }
-      .card-item { max-width: 100%; }
+      .live-info p { display: none; }
     }
   </style>
 </head>
@@ -70,8 +75,12 @@
 
 <header>
   <nav class="container">
-    <div id="logo-place" class="logo-container"></div>
+    <div class="header-left">
+      <div id="logo-place" class="logo-container"></div>
+      <span class="header-phrase">A Rádio da Nossa Gente</span>
+    </div>
     <div class="social-links">
+      <a href="https://www.facebook.com/conexaofm87" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank"><i class="fab fa-instagram"></i></a>
       <a href="https://wa.me/5527998184266" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
@@ -84,7 +93,7 @@
 
 <section id="podcasts">
   <div class="container">
-    <div class="section-header"><h2>Entrevistas</h2><div class="divider"></div></div>
+    <div class="section-header"><h2>Últimas Entrevistas</h2><div class="divider"></div></div>
     <div class="grid-layout" id="pod-render"></div>
   </div>
 </section>
@@ -96,30 +105,31 @@
   </div>
 </section>
 
-<section id="top10">
-  <div class="container">
-    <div class="section-header"><h2>As 10 Mais</h2><div class="divider"></div></div>
-    <div id="top10-render" class="top10-list"></div>
-  </div>
-</section>
-
-<section id="programacao" class="section-alt">
+<section id="programacao">
   <div class="container">
     <div class="section-header"><h2>Programação</h2><div class="divider"></div></div>
     <div class="grid-layout" id="prog-render"></div>
   </div>
 </section>
 
+<section id="top10" class="section-alt">
+  <div class="container">
+    <div class="section-header"><h2>As Mais Pedidas</h2><div class="divider"></div></div>
+    <div id="top10-render" class="top10-list"></div>
+  </div>
+</section>
+
 <div id="fixed-player">
   <div class="container player-content">
     <button id="btn-play" onclick="toggleRadio()"><i class="fas fa-play" id="play-icon"></i></button>
-    <div class="live-text">
-      <strong>AO VIVO</strong><br>
-      <small>Conexão FM 87,9</small>
+    <div class="live-info">
+      <strong style="font-size: 1.1rem;">OUÇA AGORA</strong><br>
+      <small>Conexão FM 87,9 - Ao Vivo</small>
     </div>
     <div class="social-footer">
-      <a href="https://wa.me/5527998184266" target="_blank" class="btn-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" class="btn-icon" style="background: #E1306C;"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/5527998184266" target="_blank" class="footer-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" class="footer-icon" style="background: #E1306C;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/conexaofm87" target="_blank" class="footer-icon" style="background: #4267B2;"><i class="fab fa-facebook-f"></i></a>
     </div>
   </div>
 </div>
@@ -134,7 +144,6 @@
     } catch(e) { return null; }
   }
 
-  // Carrossel
   let currentSlide = 0;
   function runCarousel() {
     const slides = document.querySelectorAll('.carousel-slide');
@@ -146,7 +155,6 @@
   }
 
   async function start() {
-    // Logo e Banner
     const b = await getData('banners.json');
     if(b) {
       document.getElementById('logo-place').innerHTML = `<img src="${b.logo}">`;
@@ -154,39 +162,34 @@
       runCarousel();
     }
 
-    // Entrevistas
     const p = await getData('podcasts.json');
     if(p) document.getElementById('pod-render').innerHTML = p.map(i => `
       <div class="card-item">
-        <h4 style="color:var(--primary)">${i.titulo}</h4><p style="font-size:0.8rem">${i.descricao}</p>
+        <h4>${i.titulo}</h4><p style="font-size:0.8rem">${i.descricao}</p>
         <audio controls preload="none"><source src="${i.audio}" type="audio/mpeg"></audio>
       </div>`).join('');
 
-    // Notícias
     const n = await getData('noticias.json');
     if(n) document.getElementById('news-render').innerHTML = n.map(i => `
       <div class="card-item">
-        <strong>#${i.tag}</strong><h3>${i.titulo}</h3><p style="font-size:0.85rem">${i.descricao}</p>
+        <strong style="color:var(--primary)">#${i.tag}</strong><h3>${i.titulo}</h3><p style="font-size:0.85rem">${i.descricao}</p>
       </div>`).join('');
 
-    // Top 10
     const t = await getData('top10.json');
     if(t) document.getElementById('top10-render').innerHTML = t.map(i => `
       <div class="top10-item">
-        <span style="width:25px;font-weight:bold">${i.posicao}º</span>
+        <span style="font-weight:bold; width:30px;">${i.posicao}º</span>
         <img src="${i.imagem}" class="top10-img">
         <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
       </div>`).join('');
 
-    // Programação
     const prog = await getData('programacao.json');
     if(prog) document.getElementById('prog-render').innerHTML = prog.map(i => `
       <div class="card-item" style="border-left:4px solid var(--primary)">
-        <strong>${i.horario}</strong> - ${i.programa}
+        <strong>${i.horario}</strong><br><span>${i.programa}</span><br><small>${i.locutor}</small>
       </div>`).join('');
   }
 
-  // Player de Rádio
   const rad = document.getElementById('radio-audio');
   const btnIco = document.getElementById('play-icon');
   function toggleRadio() {
