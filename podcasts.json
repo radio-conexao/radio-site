@@ -2,11 +2,19 @@
   {
     "titulo": "Entrevista com Prefeito",
     "descricao": "Batemos um papo sobre as melhorias em João Neiva.",
-    "audio": "content/entrevista1.mp3"
+    "audio": "content/entrevista1.mp3",
+    "imagem": "content/entrevista1.png"
   },
   {
     "titulo": "Momento Retrô",
     "descricao": "Os maiores sucessos dos anos 80 e 90.",
-    "audio": "content/entrevista2.mp3"
+    "audio": "content/entrevista2.mp3",
+    "imagem": "content/entrevista2.png"
+  },
+  {
+    "titulo": "Novidades da Semana",
+    "descricao": "Acompanhe as principais notícias da nossa região.",
+    "audio": "content/entrevista1.mp3",
+    "imagem": "content/entrevista1.png"
   }
 ]
