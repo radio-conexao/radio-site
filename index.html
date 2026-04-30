@@ -7,74 +7,62 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
     :root {
-      --primary: #C0392B; --primary-dark: #8B1A10; --accent: #E85C00; --bg: #FFF8F5;
-      --bg-card: #FFFFFF; --bg-section: #FFF0EB; --text-dark: #2C1A17; --border: #F0D5CE;
-      --shadow: 0 4px 20px rgba(192,57,43,0.10); --radius: 14px; --transition: 0.25s ease;
+      --primary: #C0392B; --primary-dark: #8B1A10; --bg: #FFF8F5;
+      --bg-section: #FFF0EB; --text-dark: #2C1A17; --border: #F0D5CE;
+      --radius: 12px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); line-height: 1.6; padding-bottom: 120px; }
-    h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 110px; overflow-x: hidden; }
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
-    .divider { width: 60px; height: 4px; background: var(--primary); margin: 12px auto; border-radius: 2px; }
+    .divider { width: 50px; height: 4px; background: var(--primary); margin: 10px auto 30px; border-radius: 2px; }
 
     /* HEADER */
-    header { background: #fff; border-bottom: 3px solid var(--primary); position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-    nav { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
-    .logo-container img { height: 60px; width: auto; }
-    .social-top { display: flex; gap: 15px; }
-    .social-top a { color: var(--primary); font-size: 1.3rem; transition: 0.3s; }
-    .social-top a:hover { color: var(--accent); }
+    header { background: #fff; border-bottom: 3px solid var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
+    nav { display: flex; align-items: center; justify-content: space-between; }
+    .logo-container img { height: 55px; width: auto; }
+    .social-links a { color: var(--primary); margin-left: 12px; font-size: 1.2rem; text-decoration: none; }
 
     /* CARROSSEL */
     #hero { padding: 15px 0; }
-    .carousel-container { position: relative; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); background: #111; aspect-ratio: 21/9; width: 100%; }
-    .carousel-slide { display: none; width: 100%; height: 100%; animation: fade 0.8s ease-in-out; }
+    .carousel-container { position: relative; border-radius: var(--radius); overflow: hidden; background: #000; aspect-ratio: 21/9; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .carousel-slide { display: none; width: 100%; height: 100%; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
-    @keyframes fade { from {opacity: 0.4} to {opacity: 1} }
 
-    /* SEÇÕES */
-    section { padding: 40px 0; }
+    /* SEÇÕES GERAIS */
+    section { padding: 35px 0; display: block !important; }
     .section-alt { background: var(--bg-section); }
-    .section-header { text-align: center; margin-bottom: 30px; }
+    .section-header { text-align: center; }
 
-    /* GRIDS */
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .card { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.02); }
+    /* GRIDS RESISTENTES */
+    .grid-layout { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); width: 100%; max-width: 350px; flex-grow: 1; }
     
-    /* PODCAST/ENTREVISTAS */
-    .podcast-card h4 { color: var(--primary); margin-bottom: 5px; }
-    .podcast-card audio { width: 100%; height: 35px; margin-top: 10px; }
+    /* AUDIO PLAYERS */
+    audio { width: 100%; height: 35px; margin-top: 10px; }
 
     /* TOP 10 */
-    .top10-list { display: flex; flex-direction: column; gap: 10px; max-width: 600px; margin: 0 auto; }
-    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 12px; border: 1px solid var(--border); }
-    .top10-img { width: 50px; height: 50px; border-radius: 8px; object-fit: cover; }
-    .gold { color: #FFD700; font-weight: bold; }
+    .top10-list { max-width: 600px; margin: 0 auto; }
+    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid var(--border); margin-bottom: 10px; }
+    .top10-img { width: 50px; height: 50px; border-radius: 5px; object-fit: cover; }
 
     /* PLAYER FIXO */
-    #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: linear-gradient(90deg, var(--primary-dark), var(--primary)); color: #fff; padding: 12px 0; z-index: 2000; box-shadow: 0 -5px 15px rgba(0,0,0,0.2); }
-    .player-inner { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    #btn-play { width: 45px; height: 45px; border-radius: 50%; background: #fff; color: var(--primary); border: none; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .live-info { flex-grow: 1; min-width: 0; }
-    .live-dot { width: 8px; height: 8px; background: #ff0000; border-radius: 50%; display: inline-block; margin-right: 5px; animation: pulse 1s infinite; }
-    .btn-action { background: #25D366; color: #fff; padding: 8px 12px; border-radius: 20px; font-weight: 700; font-size: 0.7rem; text-decoration: none; text-transform: uppercase; white-space: nowrap; }
+    #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 12px 0; z-index: 2000; }
+    .player-content { display: flex; align-items: center; justify-content: space-between; }
+    #btn-play { width: 50px; height: 50px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.3rem; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .live-text { flex-grow: 1; margin-left: 12px; line-height: 1.2; }
+    .social-footer { display: flex; gap: 8px; }
+    .btn-icon { background: rgba(255,255,255,0.2); color: #fff; padding: 10px; border-radius: 50%; text-decoration: none; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
 
-    @keyframes pulse { 0% {opacity: 1} 50% {opacity: 0.3} 100% {opacity: 1} }
-
-    /* MOBILE ADJUSTS */
     @media (max-width: 600px) {
       .carousel-container { aspect-ratio: 16/9; }
-      .section-header h2 { font-size: 1.3rem; }
-      .social-top { display: none; } /* Esconde no topo para não poluir o celular */
-      .live-info h3 { font-size: 0.8rem; }
-      .live-info p { display: none; }
+      .live-text p { display: none; }
+      .card-item { max-width: 100%; }
     }
   </style>
 </head>
@@ -82,10 +70,9 @@
 
 <header>
   <nav class="container">
-    <a href="#" class="logo-container" id="logo-place"></a>
-    <div class="social-top">
+    <div id="logo-place" class="logo-container"></div>
+    <div class="social-links">
       <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/conexaofm87" target="_blank"><i class="fab fa-facebook"></i></a>
       <a href="https://wa.me/5527998184266" target="_blank"><i class="fab fa-whatsapp"></i></a>
     </div>
   </nav>
@@ -97,120 +84,117 @@
 
 <section id="podcasts">
   <div class="container">
-    <div class="section-header"><h2><i class="fas fa-microphone-lines"></i> Últimas Entrevistas</h2><div class="divider"></div></div>
-    <div class="grid" id="pod-render"></div>
+    <div class="section-header"><h2>Entrevistas</h2><div class="divider"></div></div>
+    <div class="grid-layout" id="pod-render"></div>
   </div>
 </section>
 
 <section id="destaques" class="section-alt">
   <div class="container">
     <div class="section-header"><h2>Destaques</h2><div class="divider"></div></div>
-    <div class="grid" id="news-render"></div>
+    <div class="grid-layout" id="news-render"></div>
   </div>
 </section>
 
 <section id="top10">
   <div class="container">
-    <div class="section-header"><h2>As 10 Mais Pedidas</h2><div class="divider"></div></div>
-    <div class="top10-list" id="top10-render"></div>
+    <div class="section-header"><h2>As 10 Mais</h2><div class="divider"></div></div>
+    <div id="top10-render" class="top10-list"></div>
   </div>
 </section>
 
 <section id="programacao" class="section-alt">
   <div class="container">
     <div class="section-header"><h2>Programação</h2><div class="divider"></div></div>
-    <div class="grid" id="prog-render"></div>
+    <div class="grid-layout" id="prog-render"></div>
   </div>
 </section>
 
 <div id="fixed-player">
-  <div class="container player-inner">
-    <button id="btn-play" onclick="controlLive()"><i class="fas fa-play" id="play-icon"></i></button>
-    <div class="live-info">
-      <h3 style="font-size:0.9rem;"><span class="live-dot"></span> NO AR: AO VIVO</h3>
-      <p style="font-size:0.7rem; opacity:0.9;">Conexão FM 87,9 - João Neiva</p>
+  <div class="container player-content">
+    <button id="btn-play" onclick="toggleRadio()"><i class="fas fa-play" id="play-icon"></i></button>
+    <div class="live-text">
+      <strong>AO VIVO</strong><br>
+      <small>Conexão FM 87,9</small>
     </div>
-    <div style="display: flex; gap: 8px;">
-      <a href="https://wa.me/5527998184266" target="_blank" class="btn-action"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" class="btn-action" style="background: #E1306C;"><i class="fab fa-instagram"></i></a>
+    <div class="social-footer">
+      <a href="https://wa.me/5527998184266" target="_blank" class="btn-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" class="btn-icon" style="background: #E1306C;"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
 </div>
 
-<audio id="live-audio"><source src="https://stm6.painelvox.com:6920/;stream" type="audio/mpeg"></audio>
+<audio id="radio-audio"><source src="https://stm6.painelvox.com:6920/;stream" type="audio/mpeg"></audio>
 
 <script>
-  async function loadData(file) {
+  async function getData(file) {
     try {
-      const r = await fetch(file + '?v=' + Date.now());
-      return r.ok ? await r.json() : null;
+      const resp = await fetch(file + '?v=' + Date.now());
+      return resp.ok ? await resp.json() : null;
     } catch(e) { return null; }
   }
 
-  let sIndex = 0;
-  function startCarousel() {
-    let slides = document.getElementsByClassName("carousel-slide");
-    if (slides.length === 0) return;
-    for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
-    sIndex++;
-    if (sIndex > slides.length) sIndex = 1;
-    slides[sIndex-1].style.display = "block";
-    setTimeout(startCarousel, 5000);
+  // Carrossel
+  let currentSlide = 0;
+  function runCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    if(slides.length === 0) return;
+    slides.forEach(s => s.style.display = 'none');
+    currentSlide = (currentSlide + 1) > slides.length ? 1 : currentSlide + 1;
+    slides[currentSlide-1].style.display = 'block';
+    setTimeout(runCarousel, 5000);
   }
 
-  async function init() {
+  async function start() {
     // Logo e Banner
-    const b = await loadData('banners.json');
+    const b = await getData('banners.json');
     if(b) {
-      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}" alt="Logo">`;
-      const cBox = document.getElementById('carousel-box');
-      cBox.innerHTML = b.carrossel.map(s => `<div class="carousel-slide"><img src="${s.imagem}"></div>`).join('');
-      startCarousel();
+      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}">`;
+      document.getElementById('carousel-box').innerHTML = b.carrossel.map(c => `<div class="carousel-slide"><img src="${c.imagem}"></div>`).join('');
+      runCarousel();
     }
 
     // Entrevistas
-    const pod = await loadData('podcasts.json');
-    if(pod) document.getElementById('pod-render').innerHTML = pod.map(i => `
-      <div class="card podcast-card">
-        <h4>${i.titulo}</h4><p style="font-size:0.8rem; opacity:0.8;">${i.descricao}</p>
+    const p = await getData('podcasts.json');
+    if(p) document.getElementById('pod-render').innerHTML = p.map(i => `
+      <div class="card-item">
+        <h4 style="color:var(--primary)">${i.titulo}</h4><p style="font-size:0.8rem">${i.descricao}</p>
         <audio controls preload="none"><source src="${i.audio}" type="audio/mpeg"></audio>
       </div>`).join('');
 
     // Notícias
-    const news = await loadData('noticias.json');
-    if(news) document.getElementById('news-render').innerHTML = news.map(i => `
-      <div class="card">
-        <small style="color:var(--primary); font-weight:bold;">#${i.tag}</small>
-        <h3 style="font-size:1rem; margin:5px 0;">${i.titulo}</h3>
-        <p style="font-size:0.85rem;">${i.descricao}</p>
+    const n = await getData('noticias.json');
+    if(n) document.getElementById('news-render').innerHTML = n.map(i => `
+      <div class="card-item">
+        <strong>#${i.tag}</strong><h3>${i.titulo}</h3><p style="font-size:0.85rem">${i.descricao}</p>
       </div>`).join('');
 
     // Top 10
-    const t = await loadData('top10.json');
+    const t = await getData('top10.json');
     if(t) document.getElementById('top10-render').innerHTML = t.map(i => `
       <div class="top10-item">
-        <div style="width:25px;" class="${i.status}">${i.posicao}º</div>
+        <span style="width:25px;font-weight:bold">${i.posicao}º</span>
         <img src="${i.imagem}" class="top10-img">
-        <div style="flex-grow:1; line-height:1.2;"><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
+        <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
       </div>`).join('');
 
     // Programação
-    const p = await loadData('programacao.json');
-    if(p) document.getElementById('prog-render').innerHTML = p.map(i => `
-      <div class="card" style="border-left: 4px solid var(--primary); padding: 15px;">
-        <strong style="color:var(--primary);">${i.horario}</strong><br>
-        <span>${i.programa}</span><br><small style="opacity:0.6;">${i.locutor}</small>
+    const prog = await getData('programacao.json');
+    if(prog) document.getElementById('prog-render').innerHTML = prog.map(i => `
+      <div class="card-item" style="border-left:4px solid var(--primary)">
+        <strong>${i.horario}</strong> - ${i.programa}
       </div>`).join('');
   }
 
-  const audio = document.getElementById('live-audio');
-  const icon = document.getElementById('play-icon');
-  function controlLive() {
-    if(audio.paused) { audio.play(); icon.classList.replace('fa-play', 'fa-pause'); }
-    else { audio.pause(); icon.classList.replace('fa-pause', 'fa-play'); }
+  // Player de Rádio
+  const rad = document.getElementById('radio-audio');
+  const btnIco = document.getElementById('play-icon');
+  function toggleRadio() {
+    if(rad.paused) { rad.play(); btnIco.className = 'fas fa-pause'; }
+    else { rad.pause(); btnIco.className = 'fas fa-play'; }
   }
 
-  window.onload = init;
+  window.onload = start;
 </script>
 </body>
 </html>
