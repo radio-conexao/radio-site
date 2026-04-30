@@ -17,57 +17,57 @@
       --radius: 12px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 110px; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 120px; }
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
     .divider { width: 50px; height: 4px; background: var(--primary); margin: 10px auto 30px; border-radius: 2px; }
 
-    /* HEADER CORRIGIDO */
-    header { background: #fff; border-bottom: 3px solid var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
+    /* HEADER */
+    header { background: #fff; border-bottom: 3px solid var(--primary); padding: 12px 0; position: sticky; top: 0; z-index: 1000; }
     nav { display: flex; align-items: center; justify-content: space-between; }
-    .header-left { display: flex; align-items: center; gap: 15px; }
-    .logo-container img { height: 60px; width: auto; }
-    .header-phrase { font-family: 'Montserrat'; font-weight: 700; color: var(--primary); font-size: 0.9rem; text-transform: uppercase; }
-    .social-links { display: flex; gap: 12px; }
-    .social-links a { color: var(--primary); font-size: 1.4rem; text-decoration: none; transition: 0.3s; }
-    .social-links a:hover { color: #333; }
+    .header-left { display: flex; align-items: center; gap: 20px; }
+    .logo-container img { height: 65px; width: auto; }
+    .header-phrase { font-family: 'Montserrat'; font-weight: 800; color: var(--primary); font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .social-links { display: flex; gap: 15px; }
+    .social-links a { color: var(--primary); font-size: 1.5rem; text-decoration: none; transition: 0.3s; }
 
     /* CARROSSEL */
-    #hero { padding: 15px 0; }
+    #hero { padding: 20px 0; }
     .carousel-container { position: relative; border-radius: var(--radius); overflow: hidden; background: #000; aspect-ratio: 21/9; width: 100%; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     .carousel-slide { display: none; width: 100%; height: 100%; }
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
     /* SEÇÕES */
-    section { padding: 40px 0; }
+    section { padding: 45px 0; }
     .section-alt { background: var(--bg-section); }
     .section-header { text-align: center; }
 
-    /* GRIDS */
-    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    /* GRID PARA ENTREVISTAS (3 COLUNAS) */
+    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 25px; }
+    .card-item { background: #fff; padding: 25px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 3px 10px rgba(0,0,0,0.04); }
     
-    /* AUDIO PLAYERS */
-    .card-item h4 { color: var(--primary); margin-bottom: 5px; font-family: 'Montserrat'; }
-    audio { width: 100%; height: 35px; margin-top: 10px; }
+    .card-item h4 { color: var(--primary); margin-bottom: 8px; font-family: 'Montserrat'; font-size: 1.1rem; }
+    .card-item p { font-size: 0.9rem; margin-bottom: 12px; height: 40px; overflow: hidden; }
+    audio { width: 100%; height: 38px; }
 
     /* TOP 10 */
-    .top10-list { max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid var(--border); }
-    .top10-img { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; }
+    .top10-list { max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 12px; border-radius: 10px; border: 1px solid var(--border); }
+    .top10-img { width: 60px; height: 60px; border-radius: 8px; object-fit: cover; }
 
     /* PLAYER FIXO */
     #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 15px 0; z-index: 2000; }
     .player-content { display: flex; align-items: center; justify-content: space-between; }
-    #btn-play { width: 60px; height: 60px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.5rem; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    #btn-play { width: 65px; height: 65px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.6rem; cursor: pointer; flex-shrink: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
     .live-info { flex-grow: 1; margin-left: 20px; }
-    .social-footer { display: flex; gap: 10px; }
-    .footer-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.2rem; }
+    .social-footer { display: flex; gap: 12px; }
+    .footer-icon { width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.3rem; }
 
-    @media (max-width: 600px) {
-      .header-phrase { display: none; }
+    @media (max-width: 768px) {
+      .header-phrase { font-size: 0.75rem; }
       .carousel-container { aspect-ratio: 16/9; }
       .live-info p { display: none; }
+      .header-left { gap: 10px; }
     }
   </style>
 </head>
@@ -77,7 +77,7 @@
   <nav class="container">
     <div class="header-left">
       <div id="logo-place" class="logo-container"></div>
-      <span class="header-phrase">A Rádio da Nossa Gente</span>
+      <span class="header-phrase">A sua rádio conectada em você!</span>
     </div>
     <div class="social-links">
       <a href="https://www.facebook.com/conexaofm87" target="_blank"><i class="fab fa-facebook"></i></a>
@@ -123,8 +123,8 @@
   <div class="container player-content">
     <button id="btn-play" onclick="toggleRadio()"><i class="fas fa-play" id="play-icon"></i></button>
     <div class="live-info">
-      <strong style="font-size: 1.1rem;">OUÇA AGORA</strong><br>
-      <small>Conexão FM 87,9 - Ao Vivo</small>
+      <strong style="font-size: 1.2rem; text-transform: uppercase;">Ouça Agora</strong><br>
+      <small style="opacity: 0.9;">Conexão FM 87,9 - Ao Vivo</small>
     </div>
     <div class="social-footer">
       <a href="https://wa.me/5527998184266" target="_blank" class="footer-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
@@ -155,38 +155,51 @@
   }
 
   async function start() {
+    // Logo e Banner
     const b = await getData('banners.json');
     if(b) {
-      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}">`;
+      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}" alt="Conexão FM">`;
       document.getElementById('carousel-box').innerHTML = b.carrossel.map(c => `<div class="carousel-slide"><img src="${c.imagem}"></div>`).join('');
       runCarousel();
     }
 
+    // Entrevistas (Exibe as 3 últimas do JSON)
     const p = await getData('podcasts.json');
-    if(p) document.getElementById('pod-render').innerHTML = p.map(i => `
-      <div class="card-item">
-        <h4>${i.titulo}</h4><p style="font-size:0.8rem">${i.descricao}</p>
-        <audio controls preload="none"><source src="${i.audio}" type="audio/mpeg"></audio>
-      </div>`).join('');
+    if(p) {
+      const lastThree = p.slice(0, 3);
+      document.getElementById('pod-render').innerHTML = lastThree.map(i => `
+        <div class="card-item">
+          <h4>${i.titulo}</h4>
+          <p>${i.descricao}</p>
+          <audio controls preload="none"><source src="${i.audio}" type="audio/mpeg"></audio>
+        </div>`).join('');
+    }
 
+    // Notícias
     const n = await getData('noticias.json');
     if(n) document.getElementById('news-render').innerHTML = n.map(i => `
       <div class="card-item">
-        <strong style="color:var(--primary)">#${i.tag}</strong><h3>${i.titulo}</h3><p style="font-size:0.85rem">${i.descricao}</p>
+        <strong style="color:var(--primary)">#${i.tag}</strong>
+        <h3 style="font-size:1rem; margin:5px 0;">${i.titulo}</h3>
+        <p style="font-size:0.85rem">${i.descricao}</p>
       </div>`).join('');
 
+    // Top 10
     const t = await getData('top10.json');
     if(t) document.getElementById('top10-render').innerHTML = t.map(i => `
       <div class="top10-item">
-        <span style="font-weight:bold; width:30px;">${i.posicao}º</span>
+        <span style="font-weight:bold; width:30px; color:var(--primary)">${i.posicao}º</span>
         <img src="${i.imagem}" class="top10-img">
-        <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
+        <div style="line-height:1.2;"><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
       </div>`).join('');
 
+    // Programação
     const prog = await getData('programacao.json');
     if(prog) document.getElementById('prog-render').innerHTML = prog.map(i => `
-      <div class="card-item" style="border-left:4px solid var(--primary)">
-        <strong>${i.horario}</strong><br><span>${i.programa}</span><br><small>${i.locutor}</small>
+      <div class="card-item" style="border-left:5px solid var(--primary); padding: 15px 20px;">
+        <strong style="color:var(--primary); font-size:1rem;">${i.horario}</strong><br>
+        <span style="font-weight:600;">${i.programa}</span><br>
+        <small style="opacity:0.7;">${i.locutor}</small>
       </div>`).join('');
   }
 
