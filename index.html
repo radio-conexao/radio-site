@@ -12,22 +12,28 @@
 
   <style>
     :root {
-      --primary: #C0392B; --bg: #FFF8F5;
-      --bg-section: #FFF0EB; --text-dark: #2C1A17; --border: #F0D5CE;
+      --primary: #C0392B; 
+      --bg: #FFF8F5;
+      --bg-section: #FFF0EB; 
+      --text-dark: #2C1A17; 
+      --border: #F0D5CE;
       --radius: 12px;
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 100px; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--bg); color: var(--text-dark); padding-bottom: 110px; }
     
     .container { max-width: 1200px; margin: 0 auto; padding: 0 15px; }
     .divider { width: 50px; height: 4px; background: var(--primary); margin: 10px auto 30px; border-radius: 2px; }
 
     /* HEADER */
-    header { background: #fff; border-bottom: 3px solid var(--primary); padding: 8px 0; position: sticky; top: 0; z-index: 1000; }
+    header { background: #fff; border-bottom: 3px solid var(--primary); padding: 10px 0; position: sticky; top: 0; z-index: 1000; }
     nav { display: flex; align-items: center; justify-content: space-between; }
     .header-left { display: flex; align-items: center; gap: 20px; }
-    .logo-container img { height: 85px; width: auto; }
+    
+    /* Logo maior no PC */
+    .logo-container img { height: 85px; width: auto; transition: 0.3s; }
     .header-phrase { font-family: 'Montserrat'; font-weight: 800; color: var(--primary); font-size: 1.1rem; text-transform: uppercase; }
+    
     .social-links { display: flex; gap: 15px; }
     .social-links a { color: var(--primary); font-size: 1.5rem; text-decoration: none; }
 
@@ -38,31 +44,54 @@
     .carousel-slide img { width: 100%; height: 100%; object-fit: cover; }
 
     /* SEÇÕES */
-    section { padding: 35px 0; }
+    section { padding: 40px 0; }
     .section-alt { background: var(--bg-section); }
     .section-header { text-align: center; }
 
-    /* GRID ENTREVISTAS (3 COLUNAS) */
-    .grid-entrevistas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
-    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+    /* GRID PARA 3 ENTREVISTAS */
+    .grid-entrevistas { 
+      display: grid; 
+      grid-template-columns: repeat(3, 1fr); 
+      gap: 20px; 
+    }
 
-    /* PROGRAMAÇÃO - AJUSTE DA IMAGEM */
-    .prog-item { display: flex; align-items: center; gap: 15px; min-height: 110px; }
-    .prog-img { width: 85px; height: 85px; border-radius: 10px; object-fit: cover; border: 2px solid var(--primary); background: #eee; }
+    /* GRID GERAL (Destaques e Programação) */
+    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+    
+    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.3s; }
+    .card-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+
+    /* PROGRAMAÇÃO COM IMAGEM */
+    .prog-item { display: flex; align-items: center; gap: 15px; }
+    .prog-img { width: 85px; height: 85px; border-radius: 10px; object-fit: cover; border: 2px solid var(--primary); background: #f9f9f9; }
     .prog-info { flex: 1; }
 
-    /* PLAYER FIXO */
+    /* PLAYER FIXO (RODAPÉ MENOR) */
     #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 8px 0; z-index: 2000; height: 85px; display: flex; align-items: center; }
     .player-content { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    #btn-play { width: 55px; height: 55px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    
+    #btn-play { width: 55px; height: 55px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    
+    .live-info { flex-grow: 1; margin-left: 15px; }
+    .live-info strong { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; }
+    .live-info small { opacity: 0.9; font-size: 0.75rem; display: block; }
 
-    @media (max-width: 992px) { .grid-entrevistas { grid-template-columns: 1fr 1fr; } }
+    .social-footer { display: flex; gap: 10px; }
+    .footer-icon { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.2rem; transition: 0.3s; }
+    .footer-icon:hover { transform: scale(1.1); }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 992px) {
+      .grid-entrevistas { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 768px) {
-      .grid-entrevistas { grid-template-columns: 1fr; }
       .logo-container img { height: 55px; }
-      .header-phrase { font-size: 0.7rem; }
+      .header-phrase { font-size: 0.75rem; }
+      .grid-entrevistas { grid-template-columns: 1fr; }
       .carousel-container { aspect-ratio: 16/9; }
+      #fixed-player { height: 80px; }
+      .prog-img { width: 70px; height: 70px; }
     }
   </style>
 </head>
@@ -71,7 +100,8 @@
 <header>
   <nav class="container">
     <div class="header-left">
-      <div id="logo-place" class="logo-container"></div>
+      <div id="logo-place" class="logo-container">
+        </div>
       <span class="header-phrase">A sua rádio conectada em você!</span>
     </div>
     <div class="social-links">
@@ -83,46 +113,74 @@
 </header>
 
 <section id="hero">
-  <div class="container"><div class="carousel-container" id="carousel-box"></div></div>
+  <div class="container">
+    <div class="carousel-container" id="carousel-box"></div>
+  </div>
 </section>
 
 <section id="podcasts">
   <div class="container">
-    <div class="section-header"><h2>Últimas Entrevistas</h2><div class="divider"></div></div>
+    <div class="section-header">
+      <h2>Últimas Entrevistas</h2>
+      <div class="divider"></div>
+    </div>
     <div class="grid-entrevistas" id="pod-render"></div>
   </div>
 </section>
 
-<section id="programacao" class="section-alt">
+<section id="destaques" class="section-alt">
   <div class="container">
-    <div class="section-header"><h2>Programação</h2><div class="divider"></div></div>
+    <div class="section-header">
+      <h2>Destaques</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="grid-layout" id="news-render"></div>
+  </div>
+</section>
+
+<section id="programacao">
+  <div class="container">
+    <div class="section-header">
+      <h2>Programação</h2>
+      <div class="divider"></div>
+    </div>
     <div class="grid-layout" id="prog-render"></div>
   </div>
 </section>
 
-<section id="top10">
+<section id="top10" class="section-alt">
   <div class="container">
-    <div class="section-header"><h2>As Mais Pedidas</h2><div class="divider"></div></div>
-    <div id="top10-render" class="container" style="max-width:600px;"></div>
+    <div class="section-header">
+      <h2>As Mais Pedidas</h2>
+      <div class="divider"></div>
+    </div>
+    <div id="top10-render" style="max-width: 600px; margin: 0 auto;"></div>
   </div>
 </section>
 
 <div id="fixed-player">
   <div class="container player-content">
-    <button id="btn-play" onclick="toggleRadio()"><i class="fas fa-play" id="play-icon"></i></button>
-    <div style="flex-grow:1; margin-left:15px;">
-      <strong>OUÇA AGORA</strong><br><small>Conexão FM 87,9 - Ao Vivo</small>
+    <button id="btn-play" onclick="toggleRadio()">
+      <i class="fas fa-play" id="play-icon"></i>
+    </button>
+    <div class="live-info">
+      <strong>Ouça Agora</strong>
+      <small>Conexão FM 87,9 - Ao Vivo</small>
     </div>
-    <div style="display:flex; gap:10px;">
-      <a href="https://wa.me/5527998184266" target="_blank" style="color:#fff; font-size:1.5rem;"><i class="fab fa-whatsapp"></i></a>
-      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" style="color:#fff; font-size:1.5rem;"><i class="fab fa-instagram"></i></a>
+    <div class="social-footer">
+      <a href="https://wa.me/5527998184266" target="_blank" class="footer-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://www.instagram.com/conexaojoaoneiva/" target="_blank" class="footer-icon" style="background: #E1306C;"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.facebook.com/conexaofm87" target="_blank" class="footer-icon" style="background: #4267B2;"><i class="fab fa-facebook-f"></i></a>
     </div>
   </div>
 </div>
 
-<audio id="radio-audio"><source src="https://stm6.painelvox.com:6920/;stream" type="audio/mpeg"></audio>
+<audio id="radio-audio">
+  <source src="https://stm6.painelvox.com:6920/;stream" type="audio/mpeg">
+</audio>
 
 <script>
+  // Função para buscar dados dos arquivos JSON
   async function getData(file) {
     try {
       const resp = await fetch(file + '?v=' + Date.now());
@@ -130,52 +188,95 @@
     } catch(e) { return null; }
   }
 
+  let currentSlide = 0;
+  function runCarousel() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    if(slides.length === 0) return;
+    slides.forEach(s => s.style.display = 'none');
+    currentSlide = (currentSlide + 1) > slides.length ? 1 : currentSlide + 1;
+    slides[currentSlide-1].style.display = 'block';
+    setTimeout(runCarousel, 5000);
+  }
+
   async function start() {
+    // Carregar Banners e Logo
     const b = await getData('banners.json');
     if(b) {
-      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}">`;
-      document.getElementById('carousel-box').innerHTML = b.carrossel.map((c, idx) => `<div class="carousel-slide" style="${idx===0?'display:block':''}"><img src="${c.imagem}"></div>`).join('');
+      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}" alt="Logo">`;
+      document.getElementById('carousel-box').innerHTML = b.carrossel.map((c, idx) => 
+        `<div class="carousel-slide" style="${idx === 0 ? 'display:block' : ''}"><img src="${c.imagem}"></div>`
+      ).join('');
+      runCarousel();
     }
 
+    // Carregar 3 Entrevistas com imagens do arquivo podcasts.json
     const p = await getData('podcasts.json');
     if(p) {
       document.getElementById('pod-render').innerHTML = p.slice(0, 3).map(i => `
         <div class="card-item">
-          <h4>${i.titulo}</h4><p style="font-size:0.8rem; margin-bottom:10px;">${i.descricao}</p>
-          <audio controls style="width:100%;"><source src="${i.audio}" type="audio/mpeg"></audio>
+          ${i.imagem ? `<img src="${i.imagem}" style="width:100%; height:160px; object-fit:cover; border-radius:8px; margin-bottom:12px;">` : ''}
+          <h4 style="color:var(--primary); margin-bottom:5px;">${i.titulo}</h4>
+          <p style="font-size:0.85rem; margin-bottom:12px; height:40px; overflow:hidden;">${i.descricao}</p>
+          <audio controls style="width:100%; height:35px;"><source src="${i.audio}" type="audio/mpeg"></audio>
         </div>`).join('');
     }
 
+    // Carregar Notícias/Destaques
+    const n = await getData('noticias.json');
+    if(n) {
+      document.getElementById('news-render').innerHTML = n.map(i => `
+        <div class="card-item">
+          <strong style="color:var(--primary); font-size:0.8rem;">#${i.tag}</strong>
+          <h3 style="margin:5px 0; font-size:1.1rem;">${i.titulo}</h3>
+          <p style="font-size:0.85rem;">${i.descricao}</p>
+        </div>`).join('');
+    }
+
+    // Carregar Programação com suporte a imagem .png
     const prog = await getData('programacao.json');
     if(prog) {
       document.getElementById('prog-render').innerHTML = prog.map(i => `
         <div class="card-item prog-item">
           <img src="${i.imagem}" class="prog-img" onerror="this.src='https://via.placeholder.com/85?text=Radio'">
           <div class="prog-info">
-            <strong style="color:var(--primary)">${i.horario}</strong><br>
-            <span style="font-weight:bold">${i.programa}</span><br>
-            <small>${i.locutor}</small>
+            <strong style="color:var(--primary); font-size:0.9rem;">${i.horario}</strong><br>
+            <span style="font-weight:bold; display:block; margin:2px 0;">${i.programa}</span>
+            <small style="color:#666;">${i.locutor}</small>
           </div>
         </div>`).join('');
     }
 
+    // Carregar Top 10
     const t = await getData('top10.json');
     if(t) {
       document.getElementById('top10-render').innerHTML = t.map(i => `
-        <div style="display:flex; align-items:center; gap:15px; background:#fff; padding:10px; margin-bottom:10px; border-radius:10px; border:1px solid var(--border);">
-          <strong>${i.posicao}º</strong><img src="${i.imagem}" style="width:50px; height:50px; border-radius:5px; object-fit:cover;">
-          <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
+        <div style="display:flex; align-items:center; gap:15px; background:#fff; padding:12px; margin-bottom:10px; border-radius:10px; border:1px solid var(--border);">
+          <strong style="font-size:1.2rem; width:30px; color:var(--primary)">${i.posicao}º</strong>
+          <img src="${i.imagem}" style="width:55px; height:55px; border-radius:8px; object-fit:cover;">
+          <div>
+            <strong style="display:block; font-size:1rem;">${i.musica}</strong>
+            <small style="color:#666;">${i.artista}</small>
+          </div>
         </div>`).join('');
     }
   }
 
+  // Controles do Player de Rádio
   const rad = document.getElementById('radio-audio');
   const btnIco = document.getElementById('play-icon');
+  
   function toggleRadio() {
-    if(rad.paused) { rad.play(); btnIco.className = 'fas fa-pause'; }
-    else { rad.pause(); btnIco.className = 'fas fa-play'; }
+    if(rad.paused) {
+      rad.play();
+      btnIco.className = 'fas fa-pause';
+    } else {
+      rad.pause();
+      btnIco.className = 'fas fa-play';
+    }
   }
+
   window.onload = start;
 </script>
+
 </body>
 </html>
