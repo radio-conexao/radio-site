@@ -26,11 +26,8 @@
     header { background: #fff; border-bottom: 3px solid var(--primary); padding: 8px 0; position: sticky; top: 0; z-index: 1000; }
     nav { display: flex; align-items: center; justify-content: space-between; }
     .header-left { display: flex; align-items: center; gap: 20px; }
-    
-    /* LOGO MAIOR NO PC */
-    .logo-container img { height: 85px; width: auto; transition: 0.3s; }
+    .logo-container img { height: 85px; width: auto; }
     .header-phrase { font-family: 'Montserrat'; font-weight: 800; color: var(--primary); font-size: 1.1rem; text-transform: uppercase; }
-    
     .social-links { display: flex; gap: 15px; }
     .social-links a { color: var(--primary); font-size: 1.5rem; text-decoration: none; }
 
@@ -45,34 +42,37 @@
     .section-alt { background: var(--bg-section); }
     .section-header { text-align: center; }
 
-    /* GRID GERAL */
-    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
-    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); }
+    /* GRID PARA 3 COLUNAS (ENTREVISTAS) */
+    .grid-entrevistas { 
+        display: grid; 
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 20px; 
+    }
 
-    /* PROGRAMAÇÃO COM IMAGEM */
+    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+    .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); box-shadow: 0 2px 5px rgba(0,0,0,0.03); }
+
+    /* PROGRAMAÇÃO */
     .prog-item { display: flex; align-items: center; gap: 15px; }
-    .prog-img { width: 80px; height: 80px; border-radius: 10px; object-fit: cover; border: 2px solid var(--border); }
+    .prog-img { width: 85px; height: 85px; border-radius: 10px; object-fit: cover; border: 2px solid var(--primary); }
     .prog-info { flex: 1; }
 
-    /* TOP 10 */
-    .top10-list { max-width: 650px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
-    .top10-item { display: flex; align-items: center; gap: 15px; background: #fff; padding: 10px; border-radius: 10px; border: 1px solid var(--border); }
-    .top10-img { width: 55px; height: 55px; border-radius: 8px; object-fit: cover; }
-
-    /* PLAYER FIXO - ALTURA REDUZIDA */
+    /* PLAYER FIXO */
     #fixed-player { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary); color: #fff; padding: 8px 0; z-index: 2000; height: 85px; display: flex; align-items: center; }
     .player-content { display: flex; align-items: center; justify-content: space-between; width: 100%; }
-    #btn-play { width: 55px; height: 55px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
-    .live-info { flex-grow: 1; margin-left: 15px; }
+    #btn-play { width: 55px; height: 55px; border-radius: 50%; border: none; background: #fff; color: var(--primary); font-size: 1.4rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
     .social-footer { display: flex; gap: 10px; }
     .footer-icon { width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; font-size: 1.1rem; }
 
+    /* RESPONSIVO */
+    @media (max-width: 992px) {
+        .grid-entrevistas { grid-template-columns: 1fr 1fr; }
+    }
     @media (max-width: 768px) {
-      .logo-container img { height: 50px; }
+      .grid-entrevistas { grid-template-columns: 1fr; }
+      .logo-container img { height: 55px; }
       .header-phrase { font-size: 0.7rem; }
       .carousel-container { aspect-ratio: 16/9; }
-      #fixed-player { height: 75px; }
-      .prog-img { width: 60px; height: 60px; }
     }
   </style>
 </head>
@@ -99,7 +99,7 @@
 <section id="podcasts">
   <div class="container">
     <div class="section-header"><h2>Últimas Entrevistas</h2><div class="divider"></div></div>
-    <div class="grid-layout" id="pod-render"></div>
+    <div class="grid-entrevistas" id="pod-render"></div>
   </div>
 </section>
 
@@ -120,16 +120,16 @@
 <section id="top10" class="section-alt">
   <div class="container">
     <div class="section-header"><h2>As Mais Pedidas</h2><div class="divider"></div></div>
-    <div id="top10-render" class="top10-list"></div>
+    <div id="top10-render" class="top10-list" style="max-width:600px; margin:auto;"></div>
   </div>
 </section>
 
 <div id="fixed-player">
   <div class="container player-content">
     <button id="btn-play" onclick="toggleRadio()"><i class="fas fa-play" id="play-icon"></i></button>
-    <div class="live-info">
-      <strong style="font-size: 1rem; text-transform: uppercase;">Ouça Agora</strong><br>
-      <small style="opacity: 0.9; font-size: 0.75rem;">Conexão FM 87,9 - Ao Vivo</small>
+    <div style="flex-grow:1; margin-left:15px;">
+      <strong>OUÇA AGORA</strong><br>
+      <small>Conexão FM 87,9 - Ao Vivo</small>
     </div>
     <div class="social-footer">
       <a href="https://wa.me/5527998184266" target="_blank" class="footer-icon" style="background: #25D366;"><i class="fab fa-whatsapp"></i></a>
@@ -162,17 +162,18 @@
   async function start() {
     const b = await getData('banners.json');
     if(b) {
-      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}" alt="Logo">`;
+      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}">`;
       document.getElementById('carousel-box').innerHTML = b.carrossel.map(c => `<div class="carousel-slide"><img src="${c.imagem}"></div>`).join('');
       runCarousel();
     }
 
+    // Entrevistas - Pega exatamente 3
     const p = await getData('podcasts.json');
     if(p) {
       document.getElementById('pod-render').innerHTML = p.slice(0, 3).map(i => `
         <div class="card-item">
-          <h4 style="color:var(--primary)">${i.titulo}</h4>
-          <p style="font-size:0.85rem; margin-bottom:10px;">${i.descricao}</p>
+          <h4>${i.titulo}</h4>
+          <p style="font-size:0.85rem">${i.descricao}</p>
           <audio controls preload="none"><source src="${i.audio}" type="audio/mpeg"></audio>
         </div>`).join('');
     }
@@ -181,23 +182,21 @@
     if(n) document.getElementById('news-render').innerHTML = n.map(i => `
       <div class="card-item">
         <strong style="color:var(--primary)">#${i.tag}</strong>
-        <h3>${i.titulo}</h3>
-        <p style="font-size:0.8rem">${i.descricao}</p>
+        <h3>${i.titulo}</h3><p style="font-size:0.8rem">${i.descricao}</p>
       </div>`).join('');
 
     const t = await getData('top10.json');
     if(t) document.getElementById('top10-render').innerHTML = t.map(i => `
-      <div class="top10-item">
-        <span style="font-weight:bold; width:30px;">${i.posicao}º</span>
-        <img src="${i.imagem}" class="top10-img">
+      <div style="display:flex; align-items:center; gap:10px; background:#fff; padding:10px; margin-bottom:10px; border-radius:10px; border:1px solid var(--border);">
+        <strong>${i.posicao}º</strong><img src="${i.imagem}" style="width:50px; height:50px; border-radius:5px; object-fit:cover;">
         <div><strong>${i.musica}</strong><br><small>${i.artista}</small></div>
       </div>`).join('');
 
-    // PROGRAMAÇÃO COM SUPORTE A IMAGEM
+    // Programação com as Imagens PNG que você subiu
     const prog = await getData('programacao.json');
     if(prog) document.getElementById('prog-render').innerHTML = prog.map(i => `
       <div class="card-item prog-item">
-        <img src="${i.imagem || 'img/default-programa.jpg'}" class="prog-img">
+        <img src="${i.imagem}" class="prog-img">
         <div class="prog-info">
           <strong style="color:var(--primary)">${i.horario}</strong><br>
           <span style="font-weight:bold">${i.programa}</span><br>
