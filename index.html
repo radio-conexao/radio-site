@@ -54,13 +54,13 @@
       gap: 20px; 
     }
 
-    /* GRID GERAL (Destaques e Programação) */
+    /* GRID GERAL */
     .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
     
     .card-item { background: #fff; padding: 20px; border-radius: var(--radius); border: 1px solid var(--border); transition: 0.3s; }
     .card-item:hover { transform: translateY(-5px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
 
-    /* PROGRAMAÇÃO COM IMAGEM */
+    /* PROGRAMAÇÃO */
     .prog-item { display: flex; align-items: center; gap: 15px; }
     .prog-img { width: 85px; height: 85px; border-radius: 10px; object-fit: cover; border: 2px solid var(--primary); background: #f9f9f9; }
     .prog-info { flex: 1; }
@@ -190,12 +190,17 @@
   </div>
 </div>
 
-<!-- ENDEREÇO ATUALIZADO ABAIXO -->
+<!-- ELEMENTO DE AUDIO (SRC VAZIO POR SEGURANÇA) -->
 <audio id="radio-audio">
-  <source src="http://uk22freenew.listen2myradio.com:31332/;" type="audio/mpeg">
+  <source src="" type="audio/mpeg">
 </audio>
 
 <script>
+  // Link de streaming direto fornecido
+  const streamUrl = "https://s09.w3bserver.com/listen/conexaofm_1f3b27/radio.mp3";
+  const rad = document.getElementById('radio-audio');
+  const btnIco = document.getElementById('play-icon');
+
   async function getData(file) {
     try {
       const resp = await fetch(file + '?v=' + Date.now());
@@ -260,15 +265,17 @@
     }
   }
 
-  const rad = document.getElementById('radio-audio');
-  const btnIco = document.getElementById('play-icon');
-  
+  // Função para controlar o rádio com limpeza de buffer
   function toggleRadio() {
     if(rad.paused) {
+      // Adicionamos um parâmetro de tempo ao link para evitar cache do navegador
+      rad.src = streamUrl + "?t=" + new Date().getTime(); 
+      rad.load();
       rad.play();
       btnIco.className = 'fas fa-pause';
     } else {
       rad.pause();
+      rad.src = ""; // Corta a conexão para não gastar dados
       btnIco.className = 'fas fa-play';
     }
   }
