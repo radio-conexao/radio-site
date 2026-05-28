@@ -124,17 +124,17 @@
     <div class="grid-entrevistas">
         
         <div class="card-item">
-            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fradioconexaofm%2F01-entrevista-prefeito-micula%2F" frameborder="0"></iframe>
+            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=%2Fradioconexaofm%2F01-entrevista-prefeito-micula%2F" frameborder="0"></iframe>
             <h4 style="color:var(--primary); margin-top:10px;">Entrevista: Pref. Micula</h4>
         </div>
 
         <div class="card-item">
-            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2Fradioconexaofm%2Fentrevista-com-o-ex-secret%C3%A1rio-de-educa%C3%A7%C3%A3o-victor-de-angeli%2F" frameborder="0"></iframe>
+            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=%2Fradioconexaofm%2Fentrevista-com-o-ex-secret%C3%A1rio-de-educa%C3%A7%C3%A3o-victor-de-angeli%2F" frameborder="0"></iframe>
             <h4 style="color:var(--primary); margin-top:10px;">Entrevista: Victor de Angeli (Ex-Sec. Educação)</h4>
         </div>
 
         <div class="card-item">
-            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=https%3A%2F%2Fwww.mixcloud.com%2FCONEXAOFM87%2Fent-magna-motta%2F" frameborder="0"></iframe>
+            <iframe width="100%" height="250" src="https://www.mixcloud.com/widget/iframe/?feed=%2FCONEXAOFM87%2Fent-magna-motta%2F" frameborder="0"></iframe>
             <h4 style="color:var(--primary); margin-top:10px;">Entrevista: Magna Motta</h4>
         </div>
 
@@ -159,7 +159,7 @@
       <div class="divider"></div>
     </div>
     <div class="map-container">
-      <iframe src="https://maps.google.com/maps?q=Joao%20Neiva%20ES&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3753.1704255018617!2d-40.3879944!3d-19.7479018!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xbb4f27663249eb%3A0xc6fb5b05a6390a3a!2zUsOhZGlvIENvbmV4w6NvIEZNIDg3LDk!5e0!3m2!1spt-BR!2sbr!4v1710000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div>
   </div>
 </section>
@@ -212,3 +212,60 @@
     const slides = document.querySelectorAll('.carousel-slide');
     if(slides.length === 0) return;
     slides.forEach(s => s.style.display = 'none');
+    currentSlide = (currentSlide + 1) > slides.length ? 1 : currentSlide + 1;
+    slides[currentSlide-1].style.display = 'block';
+    setTimeout(runCarousel, 5000);
+  }
+
+  async function start() {
+    const b = await getData('banners.json');
+    if(b) {
+      document.getElementById('logo-place').innerHTML = `<img src="${b.logo}" alt="Logo">`;
+      document.getElementById('carousel-box').innerHTML = b.carrossel.map((c, idx) => 
+        `<div class="carousel-slide" style="${idx === 0 ? 'display:block' : ''}"><img src="${c.imagem}"></div>`
+      ).join('');
+      runCarousel();
+    }
+
+    const n = await getData('noticias.json');
+    if(n) {
+      document.getElementById('news-render').innerHTML = n.map(i => `
+        <div class="card-item">
+          <strong style="color:var(--primary); font-size:0.8rem;">#${i.tag}</strong>
+          <h3 style="margin:5px 0; font-size:1.1rem;">${i.titulo}</h3>
+          <p style="font-size:0.85rem;">${i.descricao}</p>
+        </div>`).join('');
+    }
+
+    const prog = await getData('programacao.json');
+    if(prog) {
+      document.getElementById('prog-render').innerHTML = prog.map(i => `
+        <div class="card-item prog-item">
+          <img src="${i.imagem}" class="prog-img" onerror="this.src='https://via.placeholder.com/85?text=Radio'">
+          <div class="prog-info">
+            <strong style="color:var(--primary); font-size:0.9rem;">${i.horario}</strong><br>
+            <span style="font-weight:bold; display:block; margin:2px 0;">${i.programa}</span>
+            <small style="color:#666;">${i.locutor}</small>
+          </div>
+        </div>`).join('');
+    }
+  }
+
+  function toggleRadio() {
+    if(rad.paused) {
+      rad.src = streamUrl + "?t=" + new Date().getTime(); 
+      rad.load();
+      rad.play();
+      btnIco.className = 'fas fa-pause';
+    } else {
+      rad.pause();
+      rad.src = ""; 
+      btnIco.className = 'fas fa-play';
+    }
+  }
+
+  window.onload = start;
+</script>
+
+</body>
+</html>
