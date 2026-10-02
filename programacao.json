@@ -8,13 +8,13 @@
   {
     "horario": "12h as 17h",
     "programa": "Conexão Online",
-    "locutor": "Nome do Locutor",
+    "locutor": "Davi Morfadini",
     "imagem": "content/conexaoonline.png"
   },
   {
     "horario": "17h as 19h",
     "programa": "Top Sertanejo",
-    "locutor": "Nome do Locutor",
+    "locutor": "Davi Monfardini",
     "imagem": "content/topsertanejo.png"
   }
 ]
